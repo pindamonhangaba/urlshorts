@@ -50,11 +50,6 @@ func (d *DB) SaveURL(url *service.URL) error {
 			return errors.New("bucket not found")
 		}
 
-		// Check if the code already exists
-		if bucket.Get([]byte(url.Code)) != nil {
-			return errors.New("code already exists")
-		}
-
 		// Marshal the URL struct to JSON
 		urlJSON, err := json.Marshal(url)
 		if err != nil {
